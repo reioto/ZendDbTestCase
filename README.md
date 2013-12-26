@@ -2,6 +2,7 @@ ZendDbTestCase
 ==============
 This library is Database TestCase using ZendFramework2 for PHPUnit
 
+<pre>
 usage:
 
 class fooTest extends \Zend\Db\TestCase 
@@ -29,3 +30,4 @@ class fooTest extends \Zend\Db\TestCase
     }
 }
 
+</pre>
