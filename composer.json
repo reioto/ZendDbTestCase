@@ -1,0 +1,26 @@
+{
+    "name": "reioto/ZendDbTestCase",
+    "type": "library",
+    "keywords": [
+        "framework",
+        "zf2",
+        "unittest",
+        "dbunit"
+    ],
+    "description": "Zend DB TestCase for DbUnit",
+    "repositories": [
+        {   
+            "type": "composer",
+            "url": "https://packages.zendframework.com/"
+        }          
+    ],
+    "license": "BSD-3-Clause",
+    "require": {
+        "phpunit/phpunit": ">=3.7",
+        "phpunit/DbUnit": "*",
+        "zendframework/zend-db":"2.*"
+    },
+    "autoload": {
+        "files": ["TestCase.php"]
+    }
+}
