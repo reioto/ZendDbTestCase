@@ -2,8 +2,32 @@ ZendDbTestCase
 ==============
 This library is Database TestCase using ZendFramework2 for PHPUnit
 
+
+INSTALLATION
+------------
+
 <pre>
-usage:
+composer.json
+{
+    "repositories": [
+        { 
+            "type": "git",
+            "url": "https://github.com/reioto/ZendDbTestCase.git",
+            "reference": "master"
+        }          
+    ],
+    "require": {
+        "reioto/zend-db-testcase":"dev-master"
+    }
+}
+
+#php composer.phar install
+</pre>
+
+Usage
+-----
+
+<pre>
 
 class fooTest extends \Zend\Db\TestCase 
 {
