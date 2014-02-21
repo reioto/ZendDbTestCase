@@ -25,6 +25,19 @@ class testcaseTest extends \Zend\Db\TestCase
         $this->assertDataSetsEqual($ext, $result);
     }
 
+    public function testGetFetchMode_default()
+    {
+        $this->assertEquals(\PDO::FETCH_ASSOC, $this->getFetchMode());
+    }
+
+    public function testSetFetchMode()
+    {
+        $ext = \PDO::FETCH_BOTH;
+        $this->setFetchMode($ext);
+        $this->assertEquals($ext, $this->getFetchMode());
+    }
+
+
     public function testQuery()
     {
         $sql = 'select * from sample';

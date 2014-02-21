@@ -37,6 +37,20 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
         return self::$_adapter;
     }
 
+    private $_defaultFetchMode = \PDO::FETCH_ASSOC;
+
+    /**
+     * @param string $fetchmode \PDO::FETCH_*
+     */
+    protected function setFetchMode($fetchmode)
+    { $this->_defaultFetchMode = $fetchmode; }
+
+    /**
+     * @return string $fetchmode \PDO::FETCH_*
+     */
+    protected function getFetchMode()
+    { return $this->_defaultFetchMode; }
+
     /**
      * @param string $sql
      * @return \PDOStatement
@@ -46,9 +60,12 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
         $adapter = $this->getAdapter();
         $stmt = $adapter->query($sql)->execute();
         $result = $stmt->getResource();
-        $result->setFetchMode(\PDO::FETCH_ASSOC);
+        $mode = $this->getFetchMode();
+      
+        $result->setFetchMode($mode);
         return $result;
     }
+
 
     /**
      * @param string $table
