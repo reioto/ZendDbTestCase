@@ -1,0 +1,10 @@
+<phpunit colors="true" >
+    <php>
+        <ini name="display_errors" value="1" />
+     </php>
+    <testsuites>
+        <testsuite>
+            <file>./testcaseTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>
