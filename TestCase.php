@@ -46,7 +46,7 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
     { $this->_defaultFetchMode = $fetchmode; }
 
     /**
-     * @return string $fetchmode \PDO::FETCH_*
+     * @return string \PDO::FETCH_*
      */
     protected function getFetchMode()
     { return $this->_defaultFetchMode; }
