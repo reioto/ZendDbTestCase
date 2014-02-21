@@ -36,4 +36,54 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
     {
         return self::$_adapter;
     }
+
+    /**
+     * @param string $sql
+     * @return \PDOStatement
+     */
+    protected function query($sql)
+    {
+        $adapter = $this->getAdapter();
+        $stmt = $adapter->query($sql)->execute();
+        $result = $stmt->getResource();
+        $result->setFetchMode(\PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    /**
+     * @param string $table
+     * @param array $data
+     * @return Adapter\Driver\ResultInterface
+     */
+    protected function insert($table, array $data)
+    {
+        $insert = new Sql\Insert($table);
+        $insert->values($data, $insert::VALUES_MERGE);
+
+        $adapter = $this->getAdapter();
+        $sqlobj = new Sql\Sql($adapter);
+        $stmt = $sqlobj->prepareStatementForSqlObject($insert);
+        return $stmt->execute();
+    }
+
+    /**
+     * @param string $table
+     * @param array $data
+     * @param string $where SQL string
+     * @return Adapter\Driver\ResultInterface
+     */
+    protected function update($table, array $data, $where = '')
+    {
+        $update = new Sql\Update($table);
+        $update->set($data);
+        if ($where !== '') {
+            $update->where($where);
+        }
+
+        $adapter = $this->getAdapter();
+        $sqlobj = new Sql\Sql($adapter);
+        $stmt = $sqlobj->prepareStatementForSqlObject($update);
+        return $stmt->execute();
+    }
+
 }
