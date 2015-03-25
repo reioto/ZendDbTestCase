@@ -3,7 +3,7 @@ ZendDbTestCase
 This library is Database TestCase using ZendFramework2 for PHPUnit
 
 
-Instlation via composer
+Installation via composer
 ------------
 
 <pre>
