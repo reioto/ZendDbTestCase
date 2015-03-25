@@ -103,4 +103,14 @@ abstract class TestCase extends \PHPUnit_Extensions_Database_TestCase
         return $stmt->execute();
     }
 
+    /**
+     * @param string $filepath
+     * @return \PHPUnit_Extensions_Database_DataSet_IDataSet
+     */
+    public function createYamlDataSet($filepath)
+    {
+        return new \PHPUnit_Extensions_Database_DataSet_YamlDataSet(
+            $filepath
+        );
+    }
 }

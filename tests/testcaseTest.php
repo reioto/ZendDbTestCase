@@ -8,7 +8,7 @@ class testcaseTest extends \Zend\Db\TestCase
      */
     public function getDataSet()
     {
-        return $this->createFlatXMLDataSet(__DIR__ . '/' . __CLASS__ .'_ds.xml');
+        return $this->createFlatXMLDataSet(__DIR__ . '/files/' . __CLASS__ .'_ds.xml');
     }
 
     protected function getDbConfig()
@@ -78,4 +78,22 @@ class testcaseTest extends \Zend\Db\TestCase
         $this->assertEquals($ext, $result);
     }
 
+    function testCreateYamlDataSet()
+    {
+        $dataset = $this->createYamlDataSet(
+            __DIR__.'/files/'.__FUNCTION__.'.yml'
+        );
+
+        $this->assertInstanceOf(
+            'PHPUnit_Extensions_Database_DataSet_IDataSet',
+            $dataset
+        );
+
+        $table_name = 'sample';
+        $table_yaml = $dataset->getTable($table_name);
+        $table_xml = $this->createFlatXMLDataSet(
+            __DIR__ . '/files/' . __FUNCTION__ .'.xml'
+        )->getTable($table_name);
+        $this->assertTablesEqual($table_xml, $table_yaml);
+    }
 }
