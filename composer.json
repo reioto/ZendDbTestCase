@@ -17,8 +17,8 @@
     "license": "BSD-3-Clause",
     "require": {
         "phpunit/phpunit": ">=3.7",
-        "phpunit/dbunit": "~1.2.0",
-        "zendframework/zend-db":"~2.0.0"
+        "phpunit/dbunit": "~1.2",
+        "zendframework/zend-db":"~2.0"
     },
     "autoload": {
         "files": ["TestCase.php"]
